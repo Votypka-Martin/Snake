@@ -1,0 +1,57 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(23, 23, 23);
+}
+#game-board{
+    --grid-width: 32;
+    --grid-height: 16;
+    --transition-speed: 200ms;
+    --cell-size: min(calc(90vw / var(--grid-width)), calc(80vh / var(--grid-height)));
+    width: calc(var(--cell-size) * var(--grid-width));
+    height: calc(var(--cell-size) * var(--grid-height));
+    background-color: rgb(35, 35, 53);
+    text-align: center;
+    color: white;
+    font-size: calc(var(--cell-size) * 2);
+    line-height: calc(var(--cell-size) * 3);
+    position: absolute;
+}
+#game-over-div{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    animation: showUp 1s ease-in;
+}
+@keyframes showUp {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.cell{
+    --x: 0;
+    --y: 0;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: green;
+    position: absolute;
+    left: calc(var(--x) * var(--cell-size));
+    top: calc(var(--y) * var(--cell-size));
+    border-radius: calc(var(--cell-size) / 2);
+    transition: left var(--transition-speed) linear, top var(--transition-speed) linear;
+}
+.stop-transition{
+    transition: none;
+}
+#score{
+    color: wheat;
+    font-weight: bold;
+    position: absolute;
+    font-size: 3vh;
+    margin: 2vh;
+    top: 0px;
+}
